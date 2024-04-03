@@ -8,7 +8,7 @@
 #
 
 
-data <- read.csv("~/mini-essay-12/Auschwitz_Death_Certificates_1942-1943 - Auschwitz.csv")
+data <- read.csv("Auschwitz_Death_Certificates_1942-1943 - Auschwitz.csv")
 
 library(dplyr)
 library(ggplot2)

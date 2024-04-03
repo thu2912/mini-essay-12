@@ -1,0 +1,70 @@
+---
+title: "Interactive visualization of the number of victim in the Holocaust"
+subtitle: "Analyzing data of Holocaust victims at Auschwitz in 1941 and 1943"
+author: "Thu Dong"
+format: pdf
+thanks: "Code and data are available at: https://github.com/thu2912/mini-essay-12.git. 
+Website link: https://n1mdxa-ha0thu-dong.shinyapps.io/mini-essay-12/. "
+editor: visual
+toc: true
+number-sections: true
+bibliography: references.bib
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(knitr)
+
+```
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+data <- read.csv("~/mini-essay-12/Auschwitz_Death_Certificates_1942-1943 - Auschwitz.csv")
+```
+
+# Introduction 
+
+The Holocaust is one of the most tragic events in the history of the World as it marks the unimaginable suffering of innocent human beings. It is believed that 17 million people were systematically murdered by the Nazis, largely based on their ethnicity. ( @statista2023) Humanity needs to remember these events to honor the victims of the Holocaust as well as learn from these mistakes to prevent them from happening in the future.
+
+This paper will use the Shiny package to create an interactive visualization of the number of Holocaust victims at Auschwitz with certain demographic details. The purpose of this paper is to provide information on the number of Holocaust victim based on their origin and their religions. Additionally, producing an interactive visualization allows for a dynamic way to explore a complex dataset and an ease of researching certain information. The paper aims to contribute an accessible resource for visualizing the data of the Holocaust that will help educate people on this historical event.
+
+# Data
+
+The data that is used for this paper is "AUSCHWITZ DEATH CERTIFICATES 1941-1943 " data from the Holocaust Survivors and Victims Database.
+
+```{r}
+#| label: tbl-head
+#| tbl-cap: Holocaust data
+#| echo: false
+#| warning: false
+#| message: false
+
+kable(head(data))
+
+```
+
+The data included over 65280 observations, each observation representing a victim of the Holocaust at Auschwitz between 1941 and 1943. There are 7 variables in the dataset including the last name and first name of the victim, their date of birth, date of death, birthplace, residence, and religion.
+
+# Interactive Visualization: 
+
+This paper has developed a Shiny web app at the link [here](https://n1mdxa-ha0thu-dong.shinyapps.io/mini-essay-12/). This interactive visualization shows a bar graph of the number of victims based on their birthplace. The website displays a search bar that allows users to look up the religion of the victims. After selecting the religion, the website will display a graph of the number of victims in the Holocaust that is categorized by their Birthplace.
+
+## Process
+
+The website is constructed with the help of RShiny2024. (@RShiny2024) To construct this website, the Shiny web application on R Studio was used. The code for this website is included [here](https://github.com/thu2912/mini-essay-12.git). The UI includes a title panel displaying "Holocaust data," a select input dropdown for choosing a specific religion, a plot output area for displaying a bar chart, and a data table output area for presenting a table of data. Additionally, server logic filters data based on selected religions and generates visualizations. The renderPlot function creates a bar chart of deaths by birthplace, with religion filtering. Then, the renderDataTable function displays the first 7 rows of filtered data.
+
+## Interpretation
+
+The website displayed a bar graph of the number of victims grouped by birthplace. In total, Warschau is the birthplace of more than 2500 victims, making it the birthplace that has the highest number of victims. Additionally, Amsterdam is the birthplace with the second highest number of victims, with approximately 2350 deaths. Warschau and Amsterdam are 2 birthplaces that have a significantly higher number of victims compared to other areas. A possible reason for this is that Poland and the Netherlands were 2 countries that were invaded by Germany in World War 2. Other birthplaces that had a high number of deaths are Litzmannstadt, Krakau, Berlin, and Paris, with approximately over 750 deaths in each city.
+
+We can further investigate the number of Jewish people who were killed, grouped by their birthplaces. The birthplace with the highest number of Jews killed is Amsterdam with approximately 2300 deaths. Warschau is the birthplace of the second-highest number of deaths in Jewish people, with around 1400 people.
+
+\newpage
+
+# Reference
